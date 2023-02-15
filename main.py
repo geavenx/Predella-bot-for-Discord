@@ -28,6 +28,6 @@ async def eutanasia(ctx):
 async def clear(ctx, amount:int):
     print('- clear called...')
     await ctx.channel.purge(limit=amount + 1)
-    await ctx.send(f'Predella fumou {amount} mensagens.')
+    await ctx.send(f'Predella matou {amount} mensagens.')
     
 bot.run(TOKEN)
