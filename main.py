@@ -1,5 +1,4 @@
 import os
-import json
 from dotenv import load_dotenv
 import discord
 from discord.ext import commands
@@ -7,15 +6,8 @@ from discord.ext import commands
 load_dotenv()
 TOKEN=os.environ['TOKEN']
 
-""" def getPrefix(client, message):
-    with open('prefixes.json', 'r') as f:
-        prefixes = json.load(f)
-    return prefixes[str(message.guild.id)] """
+bot = commands.Bot(intents= discord.Intents().all(), command_prefix= '$p ')
 
-# bot = discord.Client(intents= discord.Intents().all())
-bot = commands.Bot(intents= discord.Intents().all(), command_prefix= '=-')
-
-#class myBot(discord.Client):
 @bot.event
 async def on_ready():
     serverCounter = 0
@@ -29,13 +21,13 @@ async def on_ready():
 
 @bot.command()
 async def eutanasia(ctx):
-    print('- eutanasia called')
+    print('- eutanasia called...')
     await ctx.send('enfermeira oriental eu tô na ásia?')
 
 @bot.command()
-async def clear(ctx):
-    print('- clear called\n')
+async def clear(ctx, amount:int):
+    print('- clear called...')
+    await ctx.channel.purge(limit=amount + 1)
+    await ctx.send(f'Predella fumou {amount} mensagens.')
     
-    
-
 bot.run(TOKEN)
