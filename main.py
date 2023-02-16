@@ -9,13 +9,13 @@ TOKEN=os.environ['TOKEN']
 bot = commands.Bot(intents= discord.Intents().all(), command_prefix= '$')
 
 bot.remove_command('help')
-from music_cog import music_cog
-from help_cog import help_cog
+from cogs.music_cog import spotify
+from cogs.help_cog import help_cog
 
 @bot.event
 async def on_ready():
     await bot.add_cog(help_cog(bot))
-    await bot.add_cog(music_cog(bot))
+    await bot.add_cog(spotify(bot))
     
     serverCounter = 0
     for guild in bot.guilds:
